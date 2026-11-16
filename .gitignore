@@ -1,0 +1,10 @@
+# compilados e saidas
+*.dll
+*.pdb
+*.exe
+bin/
+obj/
+*.log
+Resultado_instalacao_Corel.txt
+# pacotes gerados
+*.zip

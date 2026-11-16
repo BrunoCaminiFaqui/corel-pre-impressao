@@ -1,0 +1,185 @@
+﻿PAINEL CMYK E PANTONE - ATUALIZAÇÃO v3.8
+
+O QUE MUDOU NA v3.8
+Trocar cores v1.4: botão "Converter RGB para CMYK"
+- Aparece depois de Ler cores quando há cor ou imagem fora do CMYK.
+- Converte de uma vez as cores RGB (também HSB, HLS, Lab, YIQ) de
+  preenchimento, contorno, degradê e texto, e as imagens RGB, Lab ou em
+  paleta, inclusive dentro de grupos e PowerClips.
+- Usa a opção de cima: "Página atual" ou "Todas as páginas".
+- Pergunta antes, mostrando quantas cores e imagens vai converter.
+- A conversão é feita pelo próprio Corel (gerenciamento de cores do
+  documento). Cada cor é convertida uma vez e o mesmo CMYK vai para todos
+  os lugares onde ela aparece.
+- Pantone, cores especiais, registro e cinza não mudam.
+- Um Ctrl+Z desfaz a conversão inteira.
+- Se alguma imagem não converter (vinculada ou travada), o painel avisa e
+  ela continua na lista de imagens.
+
+DA v3.7
+- Saiu a linha "Carga máxima CMYK: X% (quatro chapas)". O painel também
+  não faz mais essa conta ao ler a página.
+
+DA v3.6
+Conferência de cores (localizar RGB com muitos itens)
+- A lista mostra todos os itens (antes parava nos 40 primeiros e dizia
+  "... e mais N"). Com muitos itens, ela aparece em blocos de 150 com o
+  botão "Mostrar mais". Guarda até 3000 itens por página (antes 500).
+- Filtros por tipo, com a quantidade de cada um: Todos, Imagens RGB,
+  Cores RGB, Preto/cinza e Registro (só aparecem quando há mais de um tipo).
+- Anterior / Próximo: seleciona o item e dá zoom nele no Corel, um por um,
+  entrando no PowerClip quando precisa. O item atual fica azul na lista e
+  o rodapé mostra "3 de 57: ...".
+- "Selecionar os N no Corel" seleciona só os itens do filtro escolhido.
+- Imagens mostram o tamanho em pixels e, se forem vinculadas, o nome do
+  arquivo, para reconhecer qual é qual.
+- Se a conferência parar em 5 s (página grande), aparece o botão
+  "Conferir a página toda", que confere sem esse limite (pode demorar).
+- Saíram as opções "Mostrar chapas em preto" e "Carga CMYK acima de".
+
+Trocar cores v1.3
+- Imagens fora do CMYK (RGB, Lab ou em paleta) aparecem numa lista
+  própria, acima das cores: "Imagens fora do CMYK: N".
+- Clique numa imagem, ou use Anterior / Próxima: o painel seleciona a
+  imagem e dá zoom nela, entrando no PowerClip quando ela está dentro de
+  um. Em "Todas as páginas", ele vai para a página da imagem.
+
+DA v3.5 (painéis mais leves)
+Os dois painéis só trabalham quando você pede:
+- Separações: não gera mais a prévia sozinho ao abrir o painel nem ao
+  trocar de página ou de arquivo. Clique em Atualizar página (F5), ou
+  clique numa tinta, que ele lê a página na hora.
+- Separações: ao esconder e mostrar o painel de novo, ele guarda o que já
+  tinha lido (não gera tudo de novo se a página for a mesma).
+- Trocar cores (v1.2): não lê mais as cores sozinho ao abrir nem ao
+  trocar de página. Clique em Ler cores (F5). Se a página mudar, a lista
+  some e aparece o aviso para ler de novo.
+- Os dois conferem o Corel com menos frequência quando não estão em uso
+  (a cada 1,5 s; antes era a cada 0,5 s).
+
+DA v3.4 (painel Trocar cores v1.1)
+- Selecionar funciona de novo: seleciona os objetos um a um no Corel.
+- Objetos dentro de PowerClip: o painel entra no PowerClip (igual ao
+  "Editar PowerClip") e seleciona os objetos lá dentro. Para sair,
+  clique em Concluir no Corel.
+- Se a cor está em vários lugares (fora de PowerClip e dentro de um ou
+  mais PowerClips), cada clique em Selecionar vai para o próximo lugar.
+  O painel mostra "1 de 3", "2 de 3"...
+- A leitura dentro de PowerClip tenta três caminhos diferentes, e o
+  resumo mostra quantos PowerClips foram lidos ("inclui 2 PowerClips").
+  O diagnostico.log anota quantos objetos achou em cada PowerClip.
+- O painel de separações não mudou (só o título, v3.4).
+
+DA v3.3
+A "Conferência de cores" do painel de separações avisa todo preto ou
+cinza que não é só K (preto puro), com os valores de cada objeto:
+
+  Preto com mistura ......... K 90 a 100 com C, M ou Y   ex.: C20 M5 Y10 K100
+  Preto não 100% ............ K 90 a 99 sozinho          ex.: K95
+  Cinza com mistura ......... K com um pouco de C/M/Y    ex.: M5 Y2 K50
+  Cinza sem K ............... C, M e Y quase iguais      ex.: C20 M15 Y15
+
+- Conta como "cinza com mistura" quando C, M e Y são todos até 10%, ou
+  quase iguais entre si (diferença até 15%). Cor de verdade, como
+  M80 Y90 K20, não é avisada.
+- Preto ou cinza só em K (K100, K50, K20...) não é avisado.
+- "Selecionar no Corel" seleciona esses objetos também.
+
+DA v3.1
+- A aba Cores saiu do painel de separações (ficou como na v2.9).
+- Painel novo e separado: Janela > Janelas de encaixe > Trocar cores.
+  Lista as cores da arte, seleciona os objetos de uma cor e troca uma cor
+  por outra (um Ctrl+Z desfaz). As cores são comparadas pelos valores
+  (modelo + números), e cada troca é conferida lendo a cor de novo.
+- Não entram na lista: objetos fora da página, camadas ocultas, imagens,
+  e passos gerados por mistura/contour/extrusão.
+- Registros do painel Trocar cores: %LOCALAPPDATA%\Imprell\TrocarCores
+
+DA v2.9
+Cores fora do CMYK
+- Abaixo do botão Atualizar página, o painel mostra o que a página tem em
+  RGB (e também HSB, HLS, Lab), imagens RGB/Lab/em paleta e objetos em cor
+  de registro (que sai em todas as chapas). Procura dentro de grupos e
+  PowerClips, em preenchimento, degradê, contorno, texto e sombra.
+- Confere de novo a cada Atualizar página (não a cada zoom).
+- "Selecionar no Corel": volta à edição e seleciona esses objetos (o objeto
+  de fora, quando o RGB está dentro de grupo ou PowerClip).
+- Clique num item da lista: seleciona aquele objeto e dá zoom nele. Se ele
+  estiver dentro de PowerClip, o painel entra no PowerClip; depois clique
+  em Concluir no Corel antes de atualizar.
+- Ficam de fora: objetos totalmente fora da página e camadas que não
+  imprimem ou estão ocultas.
+- Em página muito grande a conferência para em 5 segundos e avisa
+  "conferência parcial".
+- Cada tipo de cor e de imagem encontrado é anotado em diagnostico.log.
+
+DA v2.8
+- Zoom e arraste sem "pulo": a parte nítida que está na tela acompanha o
+  zoom e o arraste na hora, e só é trocada quando a área nova fica pronta
+  (como no Acrobat/PitStop e no Illustrator). Antes ela sumia, aparecia a
+  página inteira desfocada e depois voltava a nitidez.
+- Atualizar página / F5 com a prévia aberta não fecha mais a prévia: o
+  zoom e a posição continuam onde estavam e a imagem é trocada no lugar.
+  Antes a prévia fechava, voltava para a vista do Corel (100%) e abria de
+  novo.
+- Se a área nova terminar de ser gerada depois de mais um zoom, ela já
+  aparece ajustada e outra é pedida em seguida.
+- Ao mudar o tamanho da janela do Corel, a área nova também é gerada.
+- No limite do zoom, a roda do mouse não passa mais para o Corel.
+- Saiu a opção "Atualizar automaticamente (a cada 5 s)".
+- "by Bruno Faqui" no rodapé do painel.
+
+DA v2.7
+- Na primeira vez que precisar da área visível, o painel testa num PDF
+  pequeno qual jeito de recortar a página funciona no Ghostscript instalado
+  (são 4 métodos) e guarda o resultado. Antes ele dependia de um único
+  comando, que podia não funcionar e deixar só a página inteira ampliada.
+- Tudo o que acontece nesse teste e na geração da área visível fica em:
+  %LOCALAPPDATA%\Imprell\SeparacoesCorel\diagnostico.log
+
+DA v2.6
+- A área visível da prévia sobre a arte é sempre gerada com exatamente
+  um pixel por pixel do monitor, alinhada à tela e mostrada sem nenhuma
+  ampliação ou redução (também sem zoom, não só depois do zoom).
+- Depois de zoom ou arraste, a área nova é gerada cerca de 0,25 s depois
+  de parar. Até ela chegar, aparece a página inteira por baixo.
+- Cores na tela pelo perfil CMYK (o default_cmyk.icc do Ghostscript, ou o
+  RSWOP do Windows), como o Illustrator faz, em vez da conta simples.
+  Se o Windows não conseguir converter, volta para a conta simples.
+
+DA v2.5
+- A miniatura da página dentro do painel foi removida. A prévia aparece
+  somente sobre a arte, gerada na resolução da tela.
+- A opção "Mostrar a prévia na área da arte" saiu do painel: a prévia é
+  sempre sobre a arte.
+- A leitura das porcentagens (C, M, Y, K e Pantones) passou para a arte:
+  com uma chapa desligada, passe o mouse sobre a arte e os valores
+  aparecem no painel.
+
+DA v2.4
+Detalhe na resolução da tela (como o Illustrator faz)
+- Na prévia sobre a arte, o painel passa a gerar só o pedaço da página que
+  está aparecendo na janela, pixel por pixel da tela (com suavização).
+  Assim a resolução não depende mais do tamanho da página nem do limite
+  de pixels da página inteira.
+- Depois de dar zoom (roda do mouse) ou arrastar, cerca de 0,7 segundo
+  depois de parar, o detalhe é gerado de novo para a nova área. Enquanto
+  isso, aparece a página inteira por baixo.
+- O PDF temporário da página fica guardado até a próxima atualização,
+  então o detalhe não precisa exportar a página do Corel de novo.
+- Na primeira vez, o painel confere se o Ghostscript posicionou a área
+  certa, comparando com a página inteira. Se não conseguir, mostra a
+  mensagem "O Ghostscript não gerou só a área visível; usando a página
+  inteira" e volta ao modo da v2.3.
+
+Continua da v2.2 e v2.3: preto/cinza só no K, suavização, opção "Tela".
+O título do painel mostra "v3.8".
+
+COMO ATUALIZAR
+1. Salve as artes e feche o CorelDRAW.
+2. Botão direito em Instalar.cmd > Executar como administrador.
+3. Abra o Corel e o painel e clique em Atualizar página.
+
+OBSERVAÇÃO
+Se a compilação falhar, nada é instalado no Corel.
+Registro de erros: %LOCALAPPDATA%\Imprell\SeparacoesCorel\erros.log

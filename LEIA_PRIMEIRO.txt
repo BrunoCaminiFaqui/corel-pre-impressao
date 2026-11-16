@@ -1,0 +1,121 @@
+﻿INSTALADOR DIRETO EM UM CMD
+Feche o Corel e execute Instalar_Separacoes_Corel.cmd como administrador.
+O CMD inclui este pacote e o extrai automaticamente.
+O resultado aparece na tela e em Resultado_instalacao_Corel.txt ao lado do CMD.
+
+SEPARAÇÕES COREL — CMYK E PANTONE — v2.1 (instalador com registro)
+Preparado para CorelDRAW 2021 de 64 bits / Windows.
+
+INSTALAR OU ATUALIZAR
+1. Instale o Ghostscript para Windows de 64 bits pelo site oficial:
+   https://www.ghostscript.com/releases/gsdnld.html
+   Escolha a edição AGPL. A instalação é feita uma única vez.
+   O Ghostscript não acompanha este ZIP. Durante o uso ele roda em
+   segundo plano, sem abrir janela; não é preciso iniciá-lo manualmente.
+2. Extraia TODO o ZIP para uma pasta. Não execute de dentro do ZIP.
+3. Salve as artes e feche o CorelDRAW.
+4. Dentro da pasta extraída, clique com o botão direito em Instalar.cmd
+   > Executar como administrador. Abra o arquivo .cmd, não o .ps1.
+   A janela fica aberta ao terminar; feche pelo X depois de ler a mensagem.
+   O instalador atualiza o painel existente e guarda uma cópia da versão anterior.
+5. Abra o Corel > Janela > Janelas de encaixe > Separações CMYK + Pantone.
+   Se o espaço de trabalho guardar o nome antigo, procure Separações CMYK.
+   Na primeira abertura, arraste para a lateral se aparecer flutuando.
+   Depois de encaixado, o painel é utilizado dentro do próprio Corel.
+
+COMO VISUALIZAR
+1. Se estiver editando dentro de um PowerClip, clique em Concluir primeiro.
+2. Clique em Atualizar página. As tintas especiais da página aparecerão
+   abaixo de Ciano, Magenta, Amarelo e Preto, com seus nomes do arquivo.
+3. Mantenha marcada a opção Mostrar a prévia na área da arte.
+4. Clique no olho de uma tinta: sua contribuição deixa de aparecer.
+   Clique novamente para mostrar. Uma mistura permanece com as tintas visíveis.
+   Shift + clique, ou botão direito, isola somente a chapa escolhida,
+   inclusive quando ela é um Pantone.
+5. Na prévia grande, use a roda do mouse para ampliar e arraste para mover.
+6. Clique em Voltar à edição, ou pressione Esc com foco no painel/prévia,
+   para mostrar todas as tintas e editar normalmente.
+7. Após editar, use Atualizar página. F5 funciona com foco no painel/prévia.
+   A atualização automática a cada 5 segundos é opcional.
+
+O QUE ESTA VERSÃO FAZ
+- Painel WPF hospedado pelo Corel, com DLL já compilada. Não há um EXE
+  próprio para abrir nem uma segunda aba de documento.
+- Mostra CMYK e cada tinta especial preservada no PDF como chapas independentes.
+- A linha CMYK liga/desliga apenas os quatro canais de processo.
+- A prévia grande é uma imagem de consulta sobre a área do documento.
+  Não insere objetos, não apaga elementos e não troca as cores dos objetos.
+- Mostra porcentagem individual das chapas ao passar o mouse na prévia menor.
+- As porcentagens dos Pantones aparecem separadamente nas suas linhas.
+- Exporta temporariamente a página atual para PDF e restaura as opções de
+  publicação que alterou, inclusive quando ocorre falha na exportação.
+- As chapas são processadas localmente. A arte não é enviada à internet.
+
+PANTONE E SOBREIMPRESSÃO
+A tinta precisa continuar definida como cor especial no documento/PDF.
+Se um Pantone já tiver sido convertido para CMYK, ou estiver em uma imagem
+CMYK sem canal especial, seu nome não poderá ser reconstruído pelo painel.
+
+As separações respeitam a sobreimpressão exportada no PDF. A caixa
+Sobreimpressão na página do Corel controla a vista original do programa;
+ela não muda as definições de sobreimpressão dos objetos.
+
+A composição colorida é aproximada, inclusive para Pantone. Não simula
+metalização, fluorescência, papel, tinta branca opaca ou uma prova ICC.
+Para enxergar uma chapa branca/transparente, isole-a (Shift + clique).
+Verifique o PDF final no fluxo de pré-impressão usado pela gráfica.
+
+LIMITES E ESTADO DE VALIDAÇÃO
+A prévia é um modo de consulta raster. Os objetos não podem ser editados
+através dela. Esc retorna à edição. Não é o mesmo recurso nativo do Illustrator.
+A DLL foi compilada e os testes de cálculo, exportação simulada, separações
+PDF reais e configuração do painel passaram. A execução dentro do
+CorelDRAW 2021/Windows ainda precisa ser validada nessa instalação.
+
+São lidas as tintas da página atual, não a lista de todas as páginas.
+A exportação usa conteúdo imprimível do PDF; guias e objetos fora da página
+não são apresentados. Conteúdos excluídos da impressão podem não aparecer.
+Páginas grandes têm a resolução reduzida para manter a prévia leve.
+Limite: 4 milhões de pixels, até 60 tintas especiais e 128 MiB de canais.
+
+SE A JANELA DE INSTALAÇÃO ABRIR E FECHAR
+- Não execute de dentro do ZIP: botão direito no ZIP > Extrair Tudo.
+- Dentro da pasta extraída, abra Instalar.cmd como administrador.
+- Esta atualização usa uma janela persistente, inclusive para erros iniciais.
+- Cada tentativa registra sua saída em:
+  %LOCALAPPDATA%\Imprell\SeparacoesCorel\instalacao-DATA-HORA-ID.log
+- Para localizar o registro, execute Ver_registro.cmd e envie o arquivo
+  instalacao-...log mais recente. Se foi usada outra conta de administrador,
+  o registro estará no perfil daquela conta.
+- Se não aparecer registro, envie uma foto da mensagem do console.
+
+SE ALGO NÃO APARECER
+- Se pedir Ghostscript, instale a versão Windows 64 bits pelo endereço acima
+  e clique em Atualizar. Não é necessário iniciar o Ghostscript à parte.
+- Se a área grande não puder ser usada, a prévia menor continua no painel
+  e a mensagem informa o problema. Volte a uma vista sem rotação.
+- Se a prévia estiver indisponível, conclua a edição do PowerClip e atualize.
+- Se faltar uma tinta ou houver nomes incompatíveis, o painel interrompe a
+  prévia com uma mensagem em vez de exibir separações incompletas.
+- O erro de ExportBitmap da v1 foi contornado substituindo aquela chamada
+  pelo fluxo PDF com preservação de tintas especiais.
+- Se necessário, o registro de erro está em:
+  %LOCALAPPDATA%\Imprell\SeparacoesCorel\erros.log
+
+INSTALAÇÃO NÃO PADRÃO DO GHOSTSCRIPT
+Crie o arquivo abaixo e escreva nele somente o caminho completo do executável:
+%LOCALAPPDATA%\Imprell\SeparacoesCorel\ghostscript.txt
+Exemplo de formato: C:\Program Files\gs\gsVERSAO\bin\gswin64c.exe
+Use o caminho real da sua instalação. A busca normal consulta o Registro
+Windows e a pasta Program Files\gs automaticamente.
+
+DESINSTALAR / CÓDIGO-FONTE
+Feche o Corel e execute Desinstalar.cmd como administrador.
+O pacote inclui fonte/Separacoes.cs e fonte/MotorSeparacoes.cs.
+Recompilar.cmd é opcional para quem alterar o código; não é necessário
+para instalar ou usar. Os testes e suas limitações estão em verificacao.
+
+REFERÊNCIAS TÉCNICAS
+CorelDRAW 2021: https://community.coreldraw.com/sdk/api/draw/23/c/pdfvbasettings
+Tipos de tinta: https://community.coreldraw.com/sdk/api/draw/23/e/pdfspottype
+Ghostscript tiffsep: https://ghostscript.readthedocs.io/en/latest/Devices.html

@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <DefineConstants>MOTOR_APENAS</DefineConstants>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="../fonte/Separacoes.cs" />
+    <Compile Include="TestesMotor.cs" />
+    <Compile Include="../fonte/MotorSeparacoes.cs" />
+  </ItemGroup>
+</Project>

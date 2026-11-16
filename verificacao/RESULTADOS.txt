@@ -1,0 +1,57 @@
+﻿VERIFICAÇÃO — CMYK E PANTONE v2 — 06/11/2026
+
+APROVADO NESTE AMBIENTE
+- DLL compilada com C# 5 e referências oficiais .NET Framework 4.
+- PE/CLI: biblioteca AnyCPU, IL-only, sem entrada de programa executável.
+- 62 verificações C#: combinação/ocultação CMYK, tintas especiais, isolamento,
+  retícula, carga CMYK, validação de dimensões, leitura de metadados, exportação
+  simulada e restauração das opções inclusive após falha, chamada real ao GS.
+- 18 verificações PDF/Ghostscript/Pillow: quatro chapas de processo e duas
+  Pantone independentes; sobreimpressão, recorte (knockout) e retícula 50%.
+- Transformações AppUI/UserUI verificadas com XslCompiledTransform .NET:
+  host WPF, DLL/classe, GUIDs, preservação de comandos e menu sem duplicação.
+- Sintaxe dos scripts PowerShell aprovada.
+- Ghostscript utilizado nos testes: 10.02.1, Linux.
+- Referências API consultadas para CorelDRAW 2021: PDFSettings,
+  PublishToPDF, OutputSpotColorsAs, pdfSpotType e pdfExportRange.
+
+NÃO VALIDADO NESTE AMBIENTE
+Não há CorelDRAW nem Windows disponíveis neste ambiente. A compilação e os
+ensaios acima não comprovam a execução no computador do usuário. A exportação
+COM real, a decodificação TIFF por WPF/WIC, o encaixe e a sobreposição à janela
+do Corel precisam ser conferidos no CorelDRAW 2021/Windows.
+A v1 havia sido carregada no painel da captura enviada pelo usuário; isso
+não valida as funções novas da v2.
+
+CONFERÊNCIA NA INSTALAÇÃO
+1. Atualizar a v1 com o Corel fechado e instalar Ghostscript 64 bits.
+2. Abrir uma página com CMYK e duas tintas especiais definidas como spot.
+3. Atualizar: confirmar os nomes e ocultar cada tinta separadamente.
+4. Isolar uma tinta com Shift + clique; depois usar Esc para voltar.
+5. Conferir trocar página/documento, ampliar, fechar painel e reabrir.
+6. Conferir que os objetos/cores originais continuam editáveis após Esc.
+
+REPRODUZIR OS TESTES (OPCIONAL)
+- dotnet run --project verificacao/TestesMotor.csproj
+  Executa 60 verificações sem instalar Corel ou WPF.
+- Para as duas verificações extras, acrescentar após -- os caminhos para
+  Ghostscript, um PDF de teste com PANTONE 186 C e PANTONE 871 C, e uma pasta
+  de saída vazia. O processo é executado de verdade.
+- python verificacao/TestarChapas.py CAMINHO_GHOSTSCRIPT
+  Requer reportlab e Pillow; cria seu próprio PDF de teste em pasta temporária.
+- powershell -File verificacao/TestarInterface.ps1
+
+SHA-256 DA DLL
+02328D9107EE2E3C1A3A93C8D5A77F66DE46420C1389E5D023343039BA46EFAF
+
+ATUALIZAÇÃO DO INSTALADOR — v2.1 — 06/11/2026
+- Lançadores .cmd abrem um cmd /d /s /k persistente.
+- Erros iniciais de arquivo ausente ou PowerShell não localizado ficam visíveis.
+- Instalar.ps1 grava uma transcrição por tentativa em LocalAppData.
+- Ver_registro.cmd abre a pasta dos registros, sem instalar ou remover nada.
+- Sintaxe PowerShell verificada novamente.
+- Verificado que uma falha antes da instalação fica no console e no registro,
+  inclusive quando o script retorna código 1 (ensaio de plataforma em Linux).
+- Lançadores conferidos como ASCII/CRLF, sem caracteres de controle indevidos.
+- DLL, fontes C#, menu e lógica de instalação do painel permanecem os da v2.
+- A janela persistente ainda não foi executada no Windows neste ambiente.
